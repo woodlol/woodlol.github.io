@@ -6,16 +6,34 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <script src="https://momentjs.com/downloads/moment-with-locales.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-        $(document).ready(() => {
-            alert(1)
-        })
+        $(document).ready(function() {
+            moment.locale('ru')
+            setInterval(() => {
+                const now = moment();
+                const endDate = moment([2021, 9, 31, 23, 59, 59]);
+                const startMoneyEnd = moment([2021, 7, 26, 3]);
+
+                const MaxMoney = 1000;
+
+                const cost = MaxMoney * (endDate.diff(now)) / (endDate.diff(startMoneyEnd))
+
+                $('#countdown').text(endDate.fromNow());
+                $('.now').text(now.format('dddd, MMMM DD YYYY, h:mm:ss'))
+                $('.cost').text(cost + '$')
+                $('.end').text(endDate.format('dddd, MMMM DD YYYY, h:mm:ss'))
+                $('.startEndMoney').text(startMoneyEnd.format('dddd, MMMM DD YYYY, h:mm:ss'))
+            }, 100)
+
+        });
     </script>
 </head>
 <body>
-    Hello
-
-
+    The start of money reduction: <span class="startEndMoney"></span> <br>
+    Now: <span class="now"></span> <br>
+    End: <span class="end"></span> <br>
+    Cost: <span class="cost"></span>
 </body>
 </html>
