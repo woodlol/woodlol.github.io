@@ -19,10 +19,10 @@
                 const cost = 1000 * (endDate.diff(now)) / (endDate.diff(startMoneyEnd))
 
                 $('#countdown').text(endDate.fromNow());
-                $('.now').text(now.format('dddd, MMMM DD YYYY, h:mm:ss'))
+                $('.now').text(now.format('dddd, MMMM DD YYYY, HH:mm:ss'))
                 $('.cost').text(cost + '$')
-                $('.end').text(endDate.format('dddd, MMMM DD YYYY, h:mm:ss'))
-                $('.startEndMoney').text(startMoneyEnd.format('dddd, MMMM DD YYYY, h:mm:ss'))
+                $('.end').text(endDate.format('dddd, MMMM DD YYYY, HH:mm:ss'))
+                $('.startEndMoney').text(startMoneyEnd.format('dddd, MMMM DD YYYY, HH:mm:ss'))
             }, 100)
         });
     </script>
