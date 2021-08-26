@@ -16,11 +16,9 @@
                 const now = moment();
                 const endDate = moment([2021, 9, 31, 23, 59, 59]);
                 const startMoneyEnd = moment([2021, 7, 26, 3]);
-                const cost = 1000 * (endDate.diff(now)) / (endDate.diff(startMoneyEnd))
 
-                $('#countdown').text(endDate.fromNow());
                 $('.now').text(now.format('dddd, MMMM DD YYYY, HH:mm:ss'))
-                $('.cost').text(cost + '$')
+                $('.cost').text(1000 * (endDate.diff(now)) / (endDate.diff(startMoneyEnd)) + '$')
                 $('.end').text(endDate.format('dddd, MMMM DD YYYY, HH:mm:ss'))
                 $('.startEndMoney').text(startMoneyEnd.format('dddd, MMMM DD YYYY, HH:mm:ss'))
             }, 100)
