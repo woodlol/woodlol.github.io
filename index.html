@@ -6,29 +6,47 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Cost info</title>
-    <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/BMW_logo_%28gray%29.svg/1200px-BMW_logo_%28gray%29.svg.png" type="image/x-icon">
+    <link rel="icon"
+          href="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/BMW_logo_%28gray%29.svg/1200px-BMW_logo_%28gray%29.svg.png"
+          type="image/x-icon">
     <script src="https://momentjs.com/downloads/moment-with-locales.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function () {
             moment.locale('ru')
-            setInterval(() => {
-                const now = moment();
-                const endDate = moment([2021, 9, 31, 23, 59, 59]);
-                const startMoneyEnd = moment([2021, 7, 26, 3]);
 
-                $('.now').text(now.format('dddd, MMMM DD YYYY, HH:mm:ss'))
-                $('.cost').text(1000 * (endDate.diff(now)) / (endDate.diff(startMoneyEnd)) + '$')
-                $('.end').text(endDate.format('dddd, MMMM DD YYYY, HH:mm:ss'))
-                $('.startEndMoney').text(startMoneyEnd.format('dddd, MMMM DD YYYY, HH:mm:ss'))
-            }, 100)
+            init();
+            setInterval(init, 500)
         });
+
+        function init() {
+            const now = moment();
+            const endDate = moment([2021, 9, 31, 23, 59, 59]);
+            const startMoneyEnd = moment([2021, 7, 26, 3]);
+
+            $('.now').text(now.format('dddd, MMMM DD YYYY, HH:mm:ss'))
+            $('.cost').text((1000 * (endDate.diff(now)) / (endDate.diff(startMoneyEnd))).toFixed(4) + ' USD')
+            $('.end').text(endDate.format('dddd, MMMM DD YYYY, HH:mm:ss'))
+            $('.startEndMoney').text(startMoneyEnd.format('dddd, MMMM DD YYYY, HH:mm:ss'))
+        }
     </script>
 </head>
 <body>
-The start of money reduction: <span class="startEndMoney"></span> <br>
-Now: <span class="now"></span> <br>
-End: <span class="end"></span> <br>
-Cost: <span class="cost"></span>
+<div style="position:absolute;     z-index: 1;">
+    The start of money reduction: <span class="startEndMoney"></span> <br>
+    Now: <span class="now"></span> <br>
+    End: <span class="end"></span> <br>
+    <span class="cost" style="
+    position: absolute;
+    background-color: aliceblue;
+    top: 284.2px;
+    left: 217px;
+    z-index: 2;
+    display: block;"></span>
+</div>
+
+
+<img style="position:relative;" src="https://img1.infobank.by/images/imagesindb/belarusbank-bankomat_130817_8.jpg.aspx"
+     alt="">
 </body>
 </html>
